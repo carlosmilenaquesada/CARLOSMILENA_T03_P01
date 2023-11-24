@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24-nov-2023 2:31:29 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Clientes" table="CLIENTES" schema="CARLOSMILENA_T03_P01" optimistic-lock="version">
+        <id name="codcliente" type="string">
+            <column name="CODCLIENTE" length="20" />
+            <generator class="assigned" />
+        </id>
+        <property name="nomcliente" type="string">
+            <column name="NOMCLIENTE" length="100" />
+        </property>
+        <property name="domiccliente" type="string">
+            <column name="DOMICCLIENTE" length="100" />
+        </property>
+        <!--ORIGINAL
+        <set name="facturases" table="FACTURAS" inverse="true" lazy="true" fetch="select">-->
+        <set name="facturases" table="FACTURAS" inverse="true" lazy="false" cascade="all" fetch="join">
+            <key>
+                <column name="CODCLIENTE" length="20" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Facturas" />
+        </set>
+    </class>
+</hibernate-mapping>

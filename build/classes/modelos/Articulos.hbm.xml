@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24-nov-2023 2:31:29 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Articulos" table="ARTICULOS" schema="CARLOSMILENA_T03_P01" optimistic-lock="version">
+        <id name="codarticulo" type="string">
+            <column name="CODARTICULO" length="20" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="familias" class="modelos.Familias" fetch="select">
+            <!--ORIGINAL <column name="CODFAMILIA" length="20" not-null="true" />
+            Si no cambio not null a false, me pide el código de cliente cada vez
+            que quiero borrar una factura-->
+            <column name="CODFAMILIA" length="20" not-null="false" />           
+        </many-to-one>
+        <property name="nomarticulo" type="string">
+            <column name="NOMARTICULO" length="100" />
+        </property>
+        <property name="precioarticulo" type="big_decimal">
+            <column name="PRECIOARTICULO" precision="12" />
+        </property>
+        <!--ORIGINAL 
+        <set name="facturases" table="FACT_ART" inverse="true" lazy="true" fetch="select">-->
+        <!--MAESTRO-->
+        <set name="facturases" table="FACT_ART" inverse="true" lazy="false" fetch="join" cascade="all">    
+            <key>
+                <column name="CODARTICULO" length="20" not-null="true" />
+            </key>
+            <many-to-many entity-name="modelos.Facturas">
+                <column name="NUMFACTURA" precision="20" scale="0" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
