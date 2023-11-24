@@ -103,7 +103,6 @@ public class Crud {
             tx.commit();
         } catch (HibernateException e) {
             error = "Error al eliminar " + s.getClass() + " -> " + s.toString();
-            System.out.println(e.getMessage());
             tx.rollback();
         } finally {
             cerrarOperacion();

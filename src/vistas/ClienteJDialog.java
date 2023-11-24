@@ -78,6 +78,7 @@ public class ClienteJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestión de clientes");
+        setResizable(false);
 
         jbActualizarTabla.setText("Actualizar tabla");
         jbActualizarTabla.addActionListener(new java.awt.event.ActionListener() {

@@ -104,8 +104,7 @@ public class Herramientas {
         + "Este proceso es irreversible. ¿Está seguro de querer borrar la familia?",//37
         "Borrado de artículo",//38
         "Al borrar un artículo, se borrarán también todas las líneas de factura donde dicho artículo aparezca.\n"
-        + "Este proceso es irreversible. ¿Está seguro de querer borrar el artículo?",//39
-        "",//40
+        + "Este proceso es irreversible. ¿Está seguro de querer borrar el artículo?",//39        
     };
 
 }
